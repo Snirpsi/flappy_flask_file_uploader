@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8">
+        <h1>Foto-Uploade zur Verabschiedung von Werner Pees</h1>
+
+        {%if loginFail%}
+
+        <div class="content-error ">
+            <h2>Fehler</h2>
+            <p>Nutzername oder Passwort falsch!</p>
+        </div>
+
+        {%endif%}
+
+
+        {% for field, errors in form.errors.items() %}
+        <div class="content-error">
+            <div class="alert alert-error">
+                {{ form[field].label }}: {{ ', '.join(errors) }}
+            </div>
+        </div>
+        {% endfor %}
+
+
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+
+
+
+                <div class="form-group">
+                    {{form.username.label(class="form-control-label")}}
+                    {%if form.username.errors%}
+                    {{form.username(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.username.errors%}
+                        <span>{{username}}</span>
+                        {%endfor%}
+                    </div>
+                    {%else%}
+                    {{form.username(class="form-control form-control-lg")}}
+                    {%endif%}
+                </div>
+
+                <div class="form-group">
+                    {{form.password.label(class="form-control-label")}}
+                    {%if form.password.errors%}
+                    {{form.password(class="form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {%for error in form.password.errors%}
+                        <span>{{password}}</span>
+                        {%endfor%}
+                    </div>
+                    {%else%}
+                    {{form.password(class="form-control form-control-lg")}}
+                    {%endif%}
+                </div>
+
+                {{ form.csrf_token }}
+
+                <div class="form-group">
+                    {{ form.submit }}
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
