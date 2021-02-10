@@ -82,5 +82,4 @@ app.config['ADMIN_PASSWORD'] = "superPassword!!!" #change this!
 * [ ] move "database" location
 
 ## Public Link
-
 <https://snirps.ddns.net/nextcloud/index.php/s/D8cxXeyBJdW9AA8>
