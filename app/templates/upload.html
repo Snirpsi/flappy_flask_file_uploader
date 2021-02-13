@@ -1,0 +1,126 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row">
+  <div class="col-md-8">
+    <h1>Foto-Uploade zur Verabschiedung von Werner Pees</h1>
+
+    {%if prevErg%}
+    {% include "erfolg.html" %}
+    {%endif%}
+
+
+    {% for field, errors in form.errors.items() %}
+    <div class="content-error">
+      <div class="alert alert-error">
+        {{ form[field].label }}: {{ ', '.join(errors) }}
+      </div>
+    </div>
+    {% endfor %}
+
+
+    <form method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <div class="form-group">
+          {{form.email.label(class="form-control-label")}}
+          {%if form.email.errors%}
+          {{form.email(class="form-control form-control-lg is-invalid")}}
+          <div class="invalid-feedback">
+            {%for error in form.email.errors%}
+            <span>{{email}}</span>
+            {%endfor%}
+          </div>
+          {%else%}
+          {{form.email(class="form-control form-control-lg")}}
+          {%endif%}
+        </div>
+
+
+        <div class="form-group">
+          {{form.name.label(class="form-control-label")}}
+          {%if form.name.errors%}
+          {{form.name(class="form-control form-control-lg is-invalid")}}
+          <div class="invalid-feedback">
+            {%for error in form.name.errors%}
+            <span>{{name}}</span>
+            {%endfor%}
+          </div>
+          {%else%}
+          {{form.name(class="form-control form-control-lg")}}
+          {%endif%}
+        </div>
+
+
+        <div class="form-group">
+          {{form.aufnahmedatum.label(class="form-control-label")}}
+          {%if form.aufnahmedatum.errors%}
+          {{form.aufnahmedatum(class="form-control form-control-lg is-invalid")}}
+          <div class="invalid-feedback">
+            {%for error in form.aufnahmedatum.errors%}
+            <span>{{aufnahmedatum}}</span>
+            {%endfor%}
+          </div>
+          {%else%}
+          {{form.aufnahmedatum(class="form-control form-control-lg")}}
+          {%endif%}
+        </div>
+
+
+        <div class="form-group">
+          {{form.beschreibung.label(class="form-control-label")}}
+          {%if form.beschreibung.errors%}
+          {{form.beschreibung(class="form-control form-control-lg is-invalid")}}
+          <div class="invalid-feedback">
+            {%for error in form.beschreibung.errors%}
+            <span>{{beschreibung}}</span>
+            {%endfor%}
+          </div>
+          {%else%}
+          {{form.beschreibung(class="form-control form-control-lg")}}
+          {%endif%}
+        </div>
+
+
+        <div class="form-group">
+          {{form.image.label(class="form-control-label")}}
+          {%if form.image.errors%}
+          {{form.image(class="form-control form-control-lg is-invalid  upload-button filestyle")}}
+          <div class="invalid-feedback">
+            {%for error in form.image.errors%}
+            <span>{{image}}</span>
+            {%endfor%}
+          </div>
+          {%else%}
+          {{form.image(class="form-control form-control-lg  upload-button filestyle")}}
+          {%endif%}
+        </div>
+
+        <div class="form-group">
+          {{form.legal.label(class="form-control-label")}}
+          {%if form.legal.errors%}
+          {{form.legal(class="form-control form-control-lg is-invalid")}}
+          <div class="invalid-feedback">
+            {%for error in form.legal.errors%}
+            <span>{{legal}}</span>
+            {%endfor%}
+          </div>
+          {%else%}
+          {{form.legal(class="form-control form-control-lg")}}
+          {%endif%}
+        </div>
+
+
+        {{ form.csrf_token }}
+        <p>Mit * markierte Felder sind verpflichtend.</p>
+        <div class="form-group">
+          {{ form.submit }}
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Liste aller hochgeladenen Fotos</h1>
+
+
+
+<table border=1>
+    {% for entry in data %}
+    <tr>
+        <td>
+            <table  style="display: block;max-width:400px; " >
+                <tr>
+                    <td>
+                        Email:
+                    </td>
+                    <td>
+                        {{entry.email}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Name:
+                    </td>
+                    <td>
+                        {{entry.name}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Aufnahmedatum:
+                    </td>
+                    <td>
+                        {{entry.aufnahmedatum}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Beschreibung:
+                    </td>
+                    <td>
+                        {{entry.beschreibung}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Uploadfilename:
+                    </td>
+                    <td>
+                        {{entry.filename}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ID:
+                    </td>
+                    <td>
+                        {{entry.id}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Uploade-Datum:
+                    </td>
+                    <td>
+                        {{entry.uploadeDate}}
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            {% set fpath = entry.id ~ '/'~ 'image.' ~ entry.fileextension  %}
+
+            <a href="{{url_for('download_file', filename=fpath)}}" download>
+                <img src="{{url_for('download_file', filename=fpath)}}" alt="File not found!" width="400">
+            </a>
+        </td>
+    </tr>
+    {%endfor%}
+</table>
+
+
+{% endblock content %}
