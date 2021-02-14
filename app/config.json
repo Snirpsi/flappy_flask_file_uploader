@@ -1,0 +1,134 @@
+{
+    "default": {
+        "title": "My Flasppy Flask File Upload",
+        "password": "superSicher123123",
+        "username": "admin",
+        "secret": "a6d7f6bhas9d8f76asdf876af8364fgaiefzba3f7ae87zvgiawuzegfivawefz",
+        "form": {
+            "name": {
+                "label": "Name:",
+                "errorReqired": "Please insert name",
+                "errorLength": "Name to long! Length must be between %(min)d and %(max)d."
+            },
+            "email": {
+                "label": "Email:",
+                "errorReqired": "Please insert an Email!",
+                "errorValidation": "Email not valid!"
+            },
+            "recordingDate": {
+                "label": "Recording date:",
+                "errorValidation": "Recording date error!"
+            },
+            "description": {
+                "label": "Description (max %(maxLength)d):",
+                "errorLength": "Description to long! Length must be between %(min)d and %(max)d.",
+                "maxLength": 500
+            },
+            "file": {
+                "label": "Select File. Maximum size %(size)dMB. Alowed types %(types)s :",
+                "errorReqired": "Please select file to upload!",
+                "maxSize": 100,
+                "errorType": "Error. These are the alowed types: %(types)s :",
+                "fileTypes": [
+                    "jpg",
+                    "jpe",
+                    "jpeg",
+                    "png",
+                    "gif",
+                    "svg",
+                    "bmp",
+                    "webp",
+                    "AVCHD",
+                    "AVI",
+                    "FLV",
+                    "MKV",
+                    "MOV",
+                    "MP4",
+                    "WEBM",
+                    "WMV",
+                    "avchd",
+                    "avi",
+                    "flv",
+                    "mkv",
+                    "mov",
+                    "mp4",
+                    "webm",
+                    "wmv"
+                ]
+            },
+            "legal": {
+                "label": "I own the rights to this image and hereby release it for publication and editing. I have also read the privacy policy.",
+                "errorReqired": "The picture will only be accepted if you agree to the declaration of consent!"
+            },
+            "submit": {
+                "label": "Submit"
+            }
+        }
+    },
+    "bilderuploade": {
+        "title": "Foto-Uploade zur Verabschiedung von Werner Pees",
+        "password": "superSicher123123",
+        "username": "admin",
+        "secret": "a6d7f6bhas9d8f76asdf876af8364fgaiefzba3f7ae87zvgiawuzegfivawefz",
+        "form": {
+            "name": {
+                "label": "Name/Spitzname des Fotografen: Wird veröffentlicht wenn das Foto verwendet wird. (Pflichtfeld)",
+                "errorReqired": "Bitte Namen angeben!",
+                "errorLength": "Der Namen ist zu lang! Die länge muss zwischen %(min)d und %(max)d liegen."
+            },
+            "email": {
+                "label": "Email: Wird nicht veröffentlicht. (Pflichtfeld)",
+                "errorReqired": "Bitte Email-Addresse angeben!",
+                "errorValidation": "Für eine eventuelle Kontaktaufnahme wird eine gültige Email-Adresse benötigt."
+            },
+            "recordingDate": {
+                "label": "Aufnahmedatum: (sofern bekannt)",
+                "errorValidation": "Recording date error!"
+            },
+            "description": {
+                "label": "Beschreibung des Fotos: (maximal %(maxLength)d zeichen):",
+                "errorLength": "Die beschreibung ist leider zu lang. Sie muss zwischen %(min)d und %(max)d Zeichen lang sein.",
+                "maxLength": 500
+            },
+            "file": {
+                "label": "Foto/Video nicht größer als %(size)dMB.  Erlaubte Formate sind: %(types)s :",
+                "errorReqired": "Bitte wählen Sie ein Bild zum hochladen aus!",
+                "maxSize": 100,
+                "errorType": "Es sint lediglich Bilder/Videos der folgenden Formate erlaubt: %(types)s :",
+                "fileTypes": [
+                    "jpg",
+                    "jpe",
+                    "jpeg",
+                    "png",
+                    "gif",
+                    "svg",
+                    "bmp",
+                    "webp",
+                    "AVCHD",
+                    "AVI",
+                    "FLV",
+                    "MKV",
+                    "MOV",
+                    "MP4",
+                    "WEBM",
+                    "WMV",
+                    "avchd",
+                    "avi",
+                    "flv",
+                    "mkv",
+                    "mov",
+                    "mp4",
+                    "webm",
+                    "wmv"
+                ]
+            },
+            "legal": {
+                "label": "Ich besitze die Rechte an diesem Bild und gebe es hiermit zur Veröffentlichung und Bearbeitung frei. Des Weiteren habe ich die Datenschutzbestimmungen gelesen.",
+                "errorReqired": "Das Bild wird nur angenommen, wenn Sie der Erklärung zustimmen!"
+            },
+            "submit": {
+                "label": "Speichern"
+            }
+        }
+    }
+}

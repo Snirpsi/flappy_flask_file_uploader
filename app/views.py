@@ -7,6 +7,8 @@ from subprocess import call
 from flask_uploads import configure_uploads, IMAGES, UploadSet
 from werkzeug.utils import secure_filename
 from markupsafe import escape
+from .customisationLoader import CustomisationLoader
+
 
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 import secrets
@@ -20,6 +22,8 @@ configure_uploads(app, allowedUploades)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "admin"
+
+settings = CustomisationLoader().conf
 
 
 class User(UserMixin):
@@ -45,7 +49,7 @@ def index():
 
         filename = secure_filename(form.image.data.filename)
         prevErg = True  # f'Filename: {filename}' + ''
-    return render_template('upload.html', form=form, filename=filename, prevErg=prevErg)
+    return render_template('upload.html', form=form, filename=filename, prevErg=prevErg, title=settings.title)
 
 
 # administration
