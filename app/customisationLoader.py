@@ -7,7 +7,6 @@ def convertDictToObject( convDict ):
     ret = empty()
     if (isinstance(convDict,dict)):
         for key in convDict.keys():
-            #print(key)
             setattr(ret,key,convertDictToObject(convDict[key]))
         return ret
     if (isinstance(convDict,list)):
@@ -39,6 +38,5 @@ class CustomisationLoader:
             json_data = json_data[useTexts] #select the configuration file
            
             self.conf = convertDictToObject(json_data)
-            #pprint(self) #wird leider jedes mal neu geladen
-            #pprint(self.conf.__dict__)
+
 
