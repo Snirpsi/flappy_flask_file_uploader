@@ -18,13 +18,11 @@ class EntryMetadata:
     email=None
     name=None
     aufnahmedatum=None
-    uploadeDate=None
+    uploadDate=None
     beschreibung = None
     image = None
     filename = None
     fileextension = None
-
-
 
     def __init__(self,email=None,name=None,aufnahmedatum=None,beschreibung=None,image=None):
         
@@ -42,7 +40,7 @@ class EntryMetadata:
 
         now = datetime.now()
         dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-        self.uploadeDate = dt_string
+        self.uploadDate = dt_string
 
 
 
@@ -106,7 +104,7 @@ class EntryMetadataLoader:
                 entry.image = None ## dont loade image here
                 entry.filename = json_string["filename"]
                 entry.fileextension =  json_string["fileextension"]
-                entry.uploadeDate= json_string["uploadeDate"]
+                entry.uploadDate= json_string["uploadDate"]
 
                 data.insert(0,entry)
         return data

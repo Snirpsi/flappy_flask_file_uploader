@@ -1,25 +1,29 @@
 # coding:utf8
 from app import app
 from flask import Flask, url_for, request, render_template, flash, redirect, flash, send_from_directory, send_file
-from .forms import UploadeForm, AdminLoginForm
+from .forms import UploadForm, AdminLoginForm
 from .pictureEntry import EntryMetadataLoader, EntryMetadata
 from subprocess import call
 from flask_uploads import configure_uploads, IMAGES, UploadSet
 from werkzeug.utils import secure_filename
 from markupsafe import escape
+from .customisationLoader import CustomisationLoader
+
 
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 import secrets
 
 # file extensions
 VIDEOS = ("AVCHD", "AVI", "FLV", "MKV", "MOV", "MP4", "WEBM", "WMV")
-allowedUploades = UploadSet('images', IMAGES + VIDEOS)
-configure_uploads(app, allowedUploades)
+allowedUploads = UploadSet('images', IMAGES + VIDEOS)
+configure_uploads(app, allowedUploads)
 
 # login
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "admin"
+
+settings = CustomisationLoader().conf
 
 
 class User(UserMixin):
@@ -29,11 +33,11 @@ class User(UserMixin):
         self.password = app.config['ADMIN_PASSWORD']
 
 
-# uploade site
+# upload site
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    form = UploadeForm()
-    filename = ""  # zeigt filename nach uploade an
+    form = UploadForm()
+    filename = ""  # zeigt filename nach upload an
     prevErg = False  # zeigt erfolgsbanner an
 
     if form.validate_on_submit():
@@ -45,7 +49,7 @@ def index():
 
         filename = secure_filename(form.image.data.filename)
         prevErg = True  # f'Filename: {filename}' + ''
-    return render_template('upload.html', form=form, filename=filename, prevErg=prevErg)
+    return render_template('upload.html', form=form, filename=filename, prevErg=prevErg, title=settings.title)
 
 
 # administration
@@ -68,7 +72,7 @@ def listAllFotos():
 
                 loader = EntryMetadataLoader()
                 data = loader.loadeAll()
-                return render_template('allUploades.html', data=data)
+                return render_template('allUploads.html', data=data)
             else:
                 loginFail = True
 
@@ -77,7 +81,7 @@ def listAllFotos():
 
 @app.route('/img/<path:filename>')
 def download_file(filename):
-    # get uploade directory without "app" in the begining
+    # get upload directory without "app" in the begining
     path = app.config['UPLOADED_IMAGES_DEST'].split("/", 1)[1]
     return send_file(path + filename)
 
