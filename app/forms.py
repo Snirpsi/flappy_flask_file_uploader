@@ -10,10 +10,10 @@ from .customisationLoader import CustomisationLoader
 from pprint import pprint
 
 VIDEOS = ("AVCHD","AVI","FLV","MKV", "MOV","MP4","WEBM","WMV")+("avchd","avi","flv","mkv", "mov","mp4","webm","wmv")
-allowedUploades = UploadSet('images', IMAGES + VIDEOS)
+allowedUploads = UploadSet('images', IMAGES + VIDEOS)
 
 
-class UploadeForm(FlaskForm):
+class UploadForm(FlaskForm):
 
 
     #'Hey %(name)s, there is a 0x%(errno)x error!' % {"name": name, "errno": errno }
@@ -29,7 +29,7 @@ class UploadeForm(FlaskForm):
     beschreibung = TextAreaField(texts.description.label % {"maxLength":texts.description.maxLength} , [Length(min=0, max=texts.description.maxLength , message=texts.description.errorLength )  ] )
     image = FileField(texts.file.label  %  {"size":texts.file.maxSize ,  "types":str(texts.file.fileTypes) },validators=[\
         FileRequired(texts.file.errorReqired),\
-        FileAllowed(allowedUploades, texts.file.errorType % {  "types":str(texts.file.fileTypes) } )])
+        FileAllowed(allowedUploads, texts.file.errorType % {  "types":str(texts.file.fileTypes) } )])
     legal = BooleanField( texts.legal.label ,validators=[DataRequired(texts.legal.errorReqired)])
     submit = SubmitField(texts.submit.label)
 
@@ -46,7 +46,7 @@ class UploadeForm(FlaskForm):
     
     image = FileField('Foto/Video nicht größer als ' +  str( int(app.config['MAX_CONTENT_LENGTH']/1024/1024)) +  "MegaByte." + " Erlaubte Formate sind:"  + str(IMAGES +VIDEOS) ,validators=[\
         FileRequired("Bitte wählen Sie ein Bild zum hochladen aus."),\
-        FileAllowed(allowedUploades, 'Es sint lediglich Bilder/Videos der folgenden Formate erlaubt:' + ' Bilder: ' +  str(IMAGES + VIDEOS) + ' Videos: ' )])
+        FileAllowed(allowedUploads, 'Es sint lediglich Bilder/Videos der folgenden Formate erlaubt:' + ' Bilder: ' +  str(IMAGES + VIDEOS) + ' Videos: ' )])
     
     legal = BooleanField( 'Ich besitze die Rechte an diesem Bild und gebe es hiermit zur Veröffentlichung und Bearbeitung frei. Des Weiteren habe ich die Datenschutzbestimmungen gelesen.*' ,validators=[DataRequired('Das Bild wird nur angenommen, wenn Sie der Erklärung zustimmen!')])
     

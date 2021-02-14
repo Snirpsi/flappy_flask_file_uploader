@@ -65,8 +65,8 @@
             }
         }
     },
-    "bilderuploade": {
-        "title": "Foto-Uploade zur Verabschiedung von Werner Pees",
+    "bilderupload": {
+        "title": "Foto-Upload zur Verabschiedung von Werner Pees",
         "password": "superSicher123123",
         "username": "admin",
         "secret": "a6d7f6bhas9d8f76asdf876af8364fgaiefzba3f7ae87zvgiawuzegfivawefz",
