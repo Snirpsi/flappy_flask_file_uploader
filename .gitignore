@@ -1,0 +1,13 @@
+.vscode/
+__pycache__/
+venv/
+oldsource/
+uploads/images/**
+*.pyc
+*.o
+datainput
+eatmem
+loade
+realtimeGpio
+realtimeMotorDeamon
+.idea/

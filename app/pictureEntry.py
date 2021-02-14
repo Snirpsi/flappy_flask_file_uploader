@@ -24,8 +24,6 @@ class EntryMetadata:
     filename = None
     fileextension = None
 
-
-
     def __init__(self,email=None,name=None,aufnahmedatum=None,beschreibung=None,image=None):
         
         if(image == None):
