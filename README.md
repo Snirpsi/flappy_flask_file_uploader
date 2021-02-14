@@ -12,7 +12,7 @@ Flappy Flask application to upload videos or images to a web server. Users can d
 
 ## Dependencies
 
-* The server must run on Linux
+* The server has to run on Linux
 * Python3
 
 **pip packages (tested)**
@@ -61,17 +61,48 @@ $ cd nameOfProjectFolder
 $ ./start.sh
 ```
 
+Customize your instance of this application by editing the "config. json" file. You although can switch between different configurations by setting the environment variable "CONF_FIELD" to a value existing in your json File. 
+
+**config.json**
+```
+{
+    "default": {
+      ...
+    },
+    "bilderupload": {
+      ...
+    }
+}
+    
+```
+
+**environment variable "CONF_FIELD"**
+```
+$export CONF_FIELD=default 
+```
+or 
+```
+$export CONF_FIELD=bilderupload 
+```
+
+
+
+
+
 To deploy the application on apache2 follow this guide: [<https://www.codementor.io/@abhishake/minimal-apache-configuration-for-deploying-a-flask-app-ubuntu-18-04-phu50a7ft>]
 
 Otherwise, read the documentation. [<https://flask.palletsprojects.com/en/1.1.x/deploying/>]
 
-You can use the "pipi.sh" script to install the pip dependencies,
+You can use the "pipi.sh" script to install the pip dependencies.
 
-**Important, before you deploy!** change the SECRET_KEY and ADMIN_PASSWORD in the **init.py**
+**Important, before you deploy!** change the ```password``` and ```secret``` in **config.json**
 
 ```
-app.config['SECRET_KEY'] = 'xaruoeibvlu2ioabelrziuaze2341rlbauzsrkuib14613422zakevr1'
-app.config['ADMIN_PASSWORD'] = "superPassword!!!" #change this!
+        ...
+        "password": "superSicher123123", <---change this
+        "username": "admin",
+        "secret": "a6d7f6bhas9d8f76asdf876af8364fgaiefzba3f7ae87zvgiawuzegfivawefz", <---change this
+        ...
 ```
 
 ## Todos
