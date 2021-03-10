@@ -37,6 +37,8 @@ class User(UserMixin):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = UploadForm()
+
+
     filename = ""  # zeigt filename nach upload an
     prevErg = False  # zeigt erfolgsbanner an
 
@@ -54,7 +56,7 @@ def index():
 
 # administration
 @app.route('/admin', methods=['GET', 'POST'])
-def listAllFotos():
+def listAllFiles():
 
     form = AdminLoginForm()
     loginFail = False
