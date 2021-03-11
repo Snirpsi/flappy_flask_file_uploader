@@ -103,14 +103,14 @@ def listAllFiles():
 
     return render_template('login.html', form=form, loginFail=loginFail)
 
-@app.route('/file/<path:filename>')
+@app.route('/publicfile/<path:filename>')
 def download_public_file(filename):
     # get upload directory without "app" in the begining
     print()
     return send_file("static/download/"+ filename)
 
 
-@app.route('/img/<path:filename>')
+@app.route('/file/<path:filename>')
 def download_file(filename):
     # get upload directory without "app" in the begining
     path = app.config['UPLOADED_IMAGES_DEST'].split("/", 1)[1]
