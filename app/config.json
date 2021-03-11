@@ -1,13 +1,13 @@
 {
     "default": {
-        "title": "My Flasppy Flask File Upload",
+        "title": "My Flappy Flask File Upload",
         "password": "superSicher123123",
         "username": "admin",
         "secret": "a6d7f6bhas9d8f76asdf876af8364fgaiefzba3f7ae87zvgiawuzegfivawefz",
         "form": {
             "name": {
                 "label": "Name:",
-                "errorReqired": "Please insert name",
+                "errorReqired": "Please insert name!",
                 "errorLength": "Name to long! Length must be between %(min)d and %(max)d.",
                 "meta": {
                     "type": "string"
@@ -38,10 +38,10 @@
                 }
             },
             "file": {
-                "label": "Select File. Maximum size %(size)dMB. Alowed types %(types)s :",
+                "label": "Select File. Maximum size %(size)dMB. Allowed types %(types)s :",
                 "errorReqired": "Please select file to upload!",
                 "maxSize": 100,
-                "errorType": "Error. These are the alowed types: %(types)s :",
+                "errorType": "Error. These are the allowed types: %(types)s :",
                 "fileTypes": [
                     "jpg",
                     "jpe",
@@ -111,24 +111,24 @@
             },
             "recordingDate": {
                 "label": "Aufnahmedatum: (sofern bekannt)",
-                "errorValidation": "Recording date error!",
+                "errorValidation": "Aufnahmedatum ungültig!",
                 "meta": {
                     "type": "date"
                 }
             },
             "description": {
                 "label": "Beschreibung des Fotos: (maximal %(maxLength)d zeichen):",
-                "errorLength": "Die beschreibung ist leider zu lang. Sie muss zwischen %(min)d und %(max)d Zeichen lang sein.",
+                "errorLength": "Die Beschreibung ist leider zu lang. Sie muss zwischen %(min)d und %(max)d Zeichen lang sein.",
                 "maxLength": 500,
                 "meta": {
                     "type": "text"
                 }
             },
             "file": {
-                "label": "Foto/Video nicht größer als %(size)dMB.  Erlaubte Formate sind: %(types)s :",
+                "label": "Foto/Video nicht größer als %(size)dMB. Erlaubte Formate sind: %(types)s :",
                 "errorReqired": "Bitte wählen Sie ein Bild zum hochladen aus!",
                 "maxSize": 100,
-                "errorType": "Es sint lediglich Bilder/Videos der folgenden Formate erlaubt: %(types)s :",
+                "errorType": "Es sind lediglich Bilder/Videos der folgenden Formate erlaubt: %(types)s :",
                 "fileTypes": [
                     "jpg",
                     "jpe",
@@ -175,7 +175,7 @@
         }
     },
     "gaestebuch": {
-        "title": "Gaestebuch-Upload zur Verabschiedung von Werner Pees",
+        "title": "Gästebuch-Upload zur Verabschiedung von Werner Pees",
         "password": "superSicher123123",
         "username": "admin",
         "secret": "a6d7f6bhas9d8f76asdf876af8364fgaiefzba3f7ae87zvgiawuzegfivawefz",
@@ -188,7 +188,7 @@
         ],
         "form": {
             "name": {
-                "label": "Name/Spitzname/Familien/gruppenname der Autoren",
+                "label": "Name/Spitzname/Familien/Gruppenname der Autoren",
                 "errorReqired": "Bitte Namen angeben!",
                 "errorLength": "Der Namen ist zu lang! Die länge muss zwischen %(min)d und %(max)d liegen.",
                 "meta": {
@@ -214,10 +214,10 @@
                 }
             },
             "file": {
-                "label": "Gästebucheintrag maximahl 2 Seiten nicht größer als %(size)dMB.  Erlaubte Formate sind: %(types)s :",
+                "label": "Gästebucheintrag maximal 2 Seiten nicht größer als %(size)dMB. Erlaubte Formate sind: %(types)s :",
                 "errorReqired": "Bitte wählen Sie ein Dokument zum hochladen aus!",
                 "maxSize": 100,
-                "errorType": "Es sint lediglich Dokumente der folgenden Formate erlaubt: %(types)s :",
+                "errorType": "Es sind lediglich Dokumente der folgenden Formate erlaubt: %(types)s :",
                 "fileTypes": [
                     "pdf",
                     "odt",
