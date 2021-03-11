@@ -5,6 +5,8 @@ from datetime import datetime
 from werkzeug.utils import secure_filename
 import secrets
 from app import app
+from .customisationLoader import CustomisationLoader
+from flask_uploads import UploadSet
 
 path =  app.config['UPLOADED_IMAGES_DEST']
 metaFileName = "metadata" 
@@ -14,21 +16,9 @@ alphabeth = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890" #mu
 
 
 class EntryMetadata:
-    id=None
-    email=None
-    name=None
-    aufnahmedatum=None
-    uploadDate=None
-    beschreibung = None
-    image = None
-    filename = None
-    fileextension = None
-
-    def __init__(self,email=None,name=None,aufnahmedatum=None,beschreibung=None,image=None):
-        
-        if(image == None):
-            return
     
+    def __init__(self, form):
+        '''
         self.id = ''.join(secrets.choice(alphabeth) for i in range(20))#random id + location to save
         self.email= escape(email) 
         self.name=escape(name) 
@@ -37,6 +27,35 @@ class EntryMetadata:
         self.image = image
         self.filename = secure_filename(image.filename)
         self.fileextension =    self.filename.split('.')[-1]
+        '''
+
+        formData = CustomisationLoader().conf.form
+        allowedUploads = UploadSet('images', tuple(formData.file.fileTypes))
+
+        for formFieldName in formData.__dict__.keys():
+            formFieldData = formData.__dict__[formFieldName]
+            #formFieldObj = None
+            if formFieldData.meta.type == "string":
+                setattr(self,formFieldName, escape(getattr(form, formFieldName).data))
+            elif formFieldData.meta.type == "email":
+                setattr(self,formFieldName, escape(getattr(form, formFieldName).data))
+            elif formFieldData.meta.type == "date":
+                setattr(self,formFieldName, escape(getattr(form, formFieldName).data))
+            elif formFieldData.meta.type == "text":
+                setattr(self,formFieldName, escape(getattr(form, formFieldName).data))
+            elif formFieldData.meta.type == "file":
+                setattr(self,formFieldName, getattr(form, formFieldName).data)
+                setattr(self,formFieldName + "Filename", secure_filename(getattr(form, formFieldName).data.filename))#filename
+                setattr(self,formFieldName + "Fileextension", (getattr(form, formFieldName).data.filename.split('.')[-1] ))#filename
+            elif formFieldData.meta.type == "check":
+                setattr(self,formFieldName, escape(getattr(form, formFieldName).data))
+            elif formFieldData.meta.type == "submit":
+                pass
+                #setattr(self,formFieldName, getattr(form, formFieldName).data)
+            else:
+                setattr(self,formFieldName,formFieldName)
+
+        self.id = ''.join(secrets.choice(alphabeth) for i in range(20))#random id + location to save
 
         now = datetime.now()
         dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
@@ -53,8 +72,20 @@ class EntryMetadata:
         else:
             print ("Successfully created the directory %s " % path)
         '''
+
+        formData = CustomisationLoader().conf.form
+        allowedUploads = UploadSet('images', tuple(formData.file.fileTypes))
+        
+        #speicehrn der/des files
+        for formFieldName in formData.__dict__.keys():
+            formFieldData = formData.__dict__[formFieldName]
+            if formFieldData.meta.type == "file":
+                getattr(self, formFieldName ).save(os.path.join(path, str(self.id) , formFieldName + "."\
+                    + str( getattr(self,formFieldName + "Fileextension") )))
+                setattr(self, formFieldName , None )
+            
         #image saved first
-        self.image.save(os.path.join(path, str(self.id) , "image" + "." + str(self.fileextension)  ))
+        #self.image.save(os.path.join(path, str(self.id) , "image" + "." + str(self.fileextension)))
 
         self.image = None#dont save image in json
 

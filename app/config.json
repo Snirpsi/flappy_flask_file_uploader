@@ -8,21 +8,34 @@
             "name": {
                 "label": "Name:",
                 "errorReqired": "Please insert name",
-                "errorLength": "Name to long! Length must be between %(min)d and %(max)d."
+                "errorLength": "Name to long! Length must be between %(min)d and %(max)d.",
+                "meta": {
+                    "type": "string"
+                }
             },
             "email": {
                 "label": "Email:",
                 "errorReqired": "Please insert an Email!",
-                "errorValidation": "Email not valid!"
+                "errorValidation": "Email not valid!",
+                "meta": {
+                    "type": "email"
+                }
             },
             "recordingDate": {
+                "type": "date",
                 "label": "Recording date:",
-                "errorValidation": "Recording date error!"
+                "errorValidation": "Recording date error!",
+                "meta": {
+                    "type": "date"
+                }
             },
             "description": {
                 "label": "Description (max %(maxLength)d):",
                 "errorLength": "Description to long! Length must be between %(min)d and %(max)d.",
-                "maxLength": 500
+                "maxLength": 500,
+                "meta": {
+                    "type": "text"
+                }
             },
             "file": {
                 "label": "Select File. Maximum size %(size)dMB. Alowed types %(types)s :",
@@ -54,14 +67,23 @@
                     "mp4",
                     "webm",
                     "wmv"
-                ]
+                ],
+                "meta": {
+                    "type": "file"
+                }
             },
             "legal": {
                 "label": "I own the rights to this image and hereby release it for publication and editing. I have also read the privacy policy.",
-                "errorReqired": "The picture will only be accepted if you agree to the declaration of consent!"
+                "errorReqired": "The picture will only be accepted if you agree to the declaration of consent!",
+                "meta": {
+                    "type": "check"
+                }
             },
             "submit": {
-                "label": "Submit"
+                "label": "Submit",
+                "meta": {
+                    "type": "submit"
+                }
             }
         }
     },
@@ -74,21 +96,33 @@
             "name": {
                 "label": "Name/Spitzname des Fotografen: Wird veröffentlicht wenn das Foto verwendet wird. (Pflichtfeld)",
                 "errorReqired": "Bitte Namen angeben!",
-                "errorLength": "Der Namen ist zu lang! Die länge muss zwischen %(min)d und %(max)d liegen."
+                "errorLength": "Der Namen ist zu lang! Die länge muss zwischen %(min)d und %(max)d liegen.",
+                "meta": {
+                    "type": "string"
+                }
             },
             "email": {
                 "label": "Email: Wird nicht veröffentlicht. (Pflichtfeld)",
                 "errorReqired": "Bitte Email-Addresse angeben!",
-                "errorValidation": "Für eine eventuelle Kontaktaufnahme wird eine gültige Email-Adresse benötigt."
+                "errorValidation": "Für eine eventuelle Kontaktaufnahme wird eine gültige Email-Adresse benötigt.",
+                "meta": {
+                    "type": "email"
+                }
             },
             "recordingDate": {
                 "label": "Aufnahmedatum: (sofern bekannt)",
-                "errorValidation": "Recording date error!"
+                "errorValidation": "Recording date error!",
+                "meta": {
+                    "type": "date"
+                }
             },
             "description": {
                 "label": "Beschreibung des Fotos: (maximal %(maxLength)d zeichen):",
                 "errorLength": "Die beschreibung ist leider zu lang. Sie muss zwischen %(min)d und %(max)d Zeichen lang sein.",
-                "maxLength": 500
+                "maxLength": 500,
+                "meta": {
+                    "type": "text"
+                }
             },
             "file": {
                 "label": "Foto/Video nicht größer als %(size)dMB.  Erlaubte Formate sind: %(types)s :",
@@ -120,14 +154,23 @@
                     "mp4",
                     "webm",
                     "wmv"
-                ]
+                ],
+                "meta": {
+                    "type": "file"
+                }
             },
             "legal": {
                 "label": "Ich besitze die Rechte an diesem Bild und gebe es hiermit zur Veröffentlichung und Bearbeitung frei. Des Weiteren habe ich die Datenschutzbestimmungen gelesen.",
-                "errorReqired": "Das Bild wird nur angenommen, wenn Sie der Erklärung zustimmen!"
+                "errorReqired": "Das Bild wird nur angenommen, wenn Sie der Erklärung zustimmen!",
+                "meta": {
+                    "type": "check"
+                }
             },
             "submit": {
-                "label": "Speichern"
+                "label": "Speichern",
+                "meta": {
+                    "type": "submit"
+                }
             }
         }
     }

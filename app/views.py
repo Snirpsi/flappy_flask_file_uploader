@@ -1,14 +1,15 @@
 # coding:utf8
 from app import app
 from flask import Flask, url_for, request, render_template, flash, redirect, flash, send_from_directory, send_file
-from .forms import UploadForm, AdminLoginForm
-from .pictureEntry import EntryMetadataLoader, EntryMetadata
+from .forms import UploadForm, AdminLoginForm, UploadFormFactory
+from .entry import EntryMetadataLoader, EntryMetadata
 from subprocess import call
 from flask_uploads import configure_uploads, IMAGES, UploadSet
 from werkzeug.utils import secure_filename
 from markupsafe import escape
 from .customisationLoader import CustomisationLoader
-
+from flask_wtf import FlaskForm, Form
+from wtforms import StringField
 
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 import secrets
@@ -36,25 +37,45 @@ class User(UserMixin):
 # upload site
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    form = UploadForm()
+    form = UploadFormFactory().getForm()
+
+
     filename = ""  # zeigt filename nach upload an
     prevErg = False  # zeigt erfolgsbanner an
 
     if form.validate_on_submit():
-        print(form.image.data)
+        print(form.file.data)
 
-        entry = EntryMetadata(str(form.email.data), str(form.name.data), str(
-            form.aufnahmedatum.data), str(form.beschreibung.data), form.image.data)
+        entry = EntryMetadata(form)
         entry.save()
 
-        filename = secure_filename(form.image.data.filename)
+        filename = secure_filename(form.file.data.filename)
         prevErg = True  # f'Filename: {filename}' + ''
+    return render_template('upload.html', form=form, filename=filename, prevErg=prevErg, title=settings.title)
+
+
+@app.route('/test', methods=['GET', 'POST'])
+def test():
+    class F(UploadForm):
+        pass
+
+    F.username = StringField("Username")
+    
+    form = F()
+
+    filename = ""  # zeigt filename nach upload an
+    prevErg = False  # zeigt erfolgsbanner an
+
+    if form.validate_on_submit():
+        print("OKOKOKO")
+
+
     return render_template('upload.html', form=form, filename=filename, prevErg=prevErg, title=settings.title)
 
 
 # administration
 @app.route('/admin', methods=['GET', 'POST'])
-def listAllFotos():
+def listAllFiles():
 
     form = AdminLoginForm()
     loginFail = False
