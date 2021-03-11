@@ -24,11 +24,6 @@ class empty:
         pass
 
 class CustomisationLoader:
-
- 
-   
-
-
     def __init__(self):
         with open("app/config.json") as json_file:
             json_data = json.load(json_file)
