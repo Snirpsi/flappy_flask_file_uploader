@@ -173,5 +173,77 @@
                 }
             }
         }
+    },
+    "gaestebuch": {
+        "title": "Gaestebuch-Upload zur Verabschiedung von Werner Pees",
+        "password": "superSicher123123",
+        "username": "admin",
+        "secret": "a6d7f6bhas9d8f76asdf876af8364fgaiefzba3f7ae87zvgiawuzegfivawefz",
+        "manual": "Zum gestalten der Gästebuchseiten entweder die Vorlagen zum download benutzen, oder selber die Seite(n) gestalten.",
+        "download": [
+            "PDF Vorlage Gästebuch mit Foto in Querformat.pdf",
+            "PDF Vorlage Gästebuch mit Foto in Hochformat.pdf",
+            "DOCX Vorlage Gästebuch mit Foto in Querformat.docx",
+            "DOCX Vorlage Gästebuch mit Foto in Hochformat.docx"
+        ],
+        "form": {
+            "name": {
+                "label": "Name/Spitzname/Familien/gruppenname der Autoren",
+                "errorReqired": "Bitte Namen angeben!",
+                "errorLength": "Der Namen ist zu lang! Die länge muss zwischen %(min)d und %(max)d liegen.",
+                "meta": {
+                    "type": "string",
+                    "required": "true"
+                }
+            },
+            "email": {
+                "label": "Email: Wird nicht veröffentlicht. (Pflichtfeld)",
+                "errorReqired": "Bitte Email-Addresse angeben!",
+                "errorValidation": "Für eine eventuelle Kontaktaufnahme wird eine gültige Email-Adresse benötigt.",
+                "meta": {
+                    "type": "email",
+                    "required": "true"
+                }
+            },
+            "telefon": {
+                "label": "Telefon/Handy",
+                "errorReqired": "Bitte Telefon angeben!",
+                "errorLength": "Die Nummer ist zu lang! Die länge muss zwischen %(min)d und %(max)d liegen.",
+                "meta": {
+                    "type": "string"
+                }
+            },
+            "file": {
+                "label": "Gästebucheintrag maximahl 2 Seiten nicht größer als %(size)dMB.  Erlaubte Formate sind: %(types)s :",
+                "errorReqired": "Bitte wählen Sie ein Dokument zum hochladen aus!",
+                "maxSize": 100,
+                "errorType": "Es sint lediglich Dokumente der folgenden Formate erlaubt: %(types)s :",
+                "fileTypes": [
+                    "pdf",
+                    "odt",
+                    "docx",
+                    "png",
+                    "jpg",
+                    "tif"
+                ],
+                "meta": {
+                    "type": "file",
+                    "required": "true"
+                }
+            },
+            "legal": {
+                "label": "Ich besitze die Rechte an Bild und Text und gebe sie hiermit zur Veröffentlichung und Bearbeitung frei. Des Weiteren habe ich die Datenschutzbestimmungen gelesen.",
+                "errorReqired": "Das Bild wird nur angenommen, wenn Sie der Erklärung zustimmen!",
+                "meta": {
+                    "type": "check"
+                }
+            },
+            "submit": {
+                "label": "Speichern",
+                "meta": {
+                    "type": "submit"
+                }
+            }
+        }
     }
 }

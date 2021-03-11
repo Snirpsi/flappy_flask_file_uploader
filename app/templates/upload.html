@@ -5,6 +5,19 @@
   <div class="col-md-8">
     <h1>{{title}}</h1>
 
+    {%if manual%}
+      <div><p>{{manual}}</p></div>
+    {%endif%}
+
+
+    {%if download%}
+      <div>
+        {%for fname in download%}
+          <p><a href="{{url_for('download_public_file', filename=fname)}}" download>{{fname}}</a></p>
+        {%endfor%}
+      </div>
+    {%endif%}
+
     {%if prevErg%}
     {% include "erfolg.html" %}
     {%endif%}
