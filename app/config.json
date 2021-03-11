@@ -1,34 +1,49 @@
 {
     "default": {
-        "title": "My Flasppy Flask File Upload",
+        "title": "My Flappy Flask File Upload",
         "password": "superSicher123123",
         "username": "admin",
         "secret": "a6d7f6bhas9d8f76asdf876af8364fgaiefzba3f7ae87zvgiawuzegfivawefz",
         "form": {
             "name": {
                 "label": "Name:",
-                "errorReqired": "Please insert name",
-                "errorLength": "Name to long! Length must be between %(min)d and %(max)d."
+                "errorReqired": "Please insert name!",
+                "errorLength": "Name to long! Length must be between %(min)d and %(max)d.",
+                "meta": {
+                    "type": "string",
+                    "required": "true"
+                }
             },
             "email": {
                 "label": "Email:",
                 "errorReqired": "Please insert an Email!",
-                "errorValidation": "Email not valid!"
+                "errorValidation": "Email not valid!",
+                "meta": {
+                    "type": "email",
+                    "required": "true"
+                }
             },
             "recordingDate": {
+                "type": "date",
                 "label": "Recording date:",
-                "errorValidation": "Recording date error!"
+                "errorValidation": "Recording date error!",
+                "meta": {
+                    "type": "date"
+                }
             },
             "description": {
                 "label": "Description (max %(maxLength)d):",
                 "errorLength": "Description to long! Length must be between %(min)d and %(max)d.",
-                "maxLength": 500
+                "maxLength": 500,
+                "meta": {
+                    "type": "text"
+                }
             },
             "file": {
-                "label": "Select File. Maximum size %(size)dMB. Alowed types %(types)s :",
+                "label": "Select File. Maximum size %(size)dMB. Allowed types %(types)s :",
                 "errorReqired": "Please select file to upload!",
                 "maxSize": 100,
-                "errorType": "Error. These are the alowed types: %(types)s :",
+                "errorType": "Error. These are the allowed types: %(types)s :",
                 "fileTypes": [
                     "jpg",
                     "jpe",
@@ -54,14 +69,25 @@
                     "mp4",
                     "webm",
                     "wmv"
-                ]
+                ],
+                "meta": {
+                    "type": "file",
+                    "required": "true"
+                }
             },
             "legal": {
                 "label": "I own the rights to this image and hereby release it for publication and editing. I have also read the privacy policy.",
-                "errorReqired": "The picture will only be accepted if you agree to the declaration of consent!"
+                "errorReqired": "The picture will only be accepted if you agree to the declaration of consent!",
+                "meta": {
+                    "type": "check",
+                    "required": "true"
+                }
             },
             "submit": {
-                "label": "Submit"
+                "label": "Submit",
+                "meta": {
+                    "type": "submit"
+                }
             }
         }
     },
@@ -74,27 +100,41 @@
             "name": {
                 "label": "Name/Spitzname des Fotografen: Wird veröffentlicht wenn das Foto verwendet wird. (Pflichtfeld)",
                 "errorReqired": "Bitte Namen angeben!",
-                "errorLength": "Der Namen ist zu lang! Die länge muss zwischen %(min)d und %(max)d liegen."
+                "errorLength": "Der Namen ist zu lang! Die länge muss zwischen %(min)d und %(max)d liegen.",
+                "meta": {
+                    "type": "string",
+                    "required": "true"
+                }
             },
             "email": {
                 "label": "Email: Wird nicht veröffentlicht. (Pflichtfeld)",
                 "errorReqired": "Bitte Email-Addresse angeben!",
-                "errorValidation": "Für eine eventuelle Kontaktaufnahme wird eine gültige Email-Adresse benötigt."
+                "errorValidation": "Für eine eventuelle Kontaktaufnahme wird eine gültige Email-Adresse benötigt.",
+                "meta": {
+                    "type": "email",
+                    "required": "true"
+                }
             },
             "recordingDate": {
                 "label": "Aufnahmedatum: (sofern bekannt)",
-                "errorValidation": "Recording date error!"
+                "errorValidation": "Aufnahmedatum ungültig!",
+                "meta": {
+                    "type": "date"
+                }
             },
             "description": {
                 "label": "Beschreibung des Fotos: (maximal %(maxLength)d zeichen):",
-                "errorLength": "Die beschreibung ist leider zu lang. Sie muss zwischen %(min)d und %(max)d Zeichen lang sein.",
-                "maxLength": 500
+                "errorLength": "Die Beschreibung ist leider zu lang. Sie muss zwischen %(min)d und %(max)d Zeichen lang sein.",
+                "maxLength": 500,
+                "meta": {
+                    "type": "text"
+                }
             },
             "file": {
-                "label": "Foto/Video nicht größer als %(size)dMB.  Erlaubte Formate sind: %(types)s :",
+                "label": "Foto/Video nicht größer als %(size)dMB. Erlaubte Formate sind: %(types)s :",
                 "errorReqired": "Bitte wählen Sie ein Bild zum hochladen aus!",
                 "maxSize": 100,
-                "errorType": "Es sint lediglich Bilder/Videos der folgenden Formate erlaubt: %(types)s :",
+                "errorType": "Es sind lediglich Bilder/Videos der folgenden Formate erlaubt: %(types)s :",
                 "fileTypes": [
                     "jpg",
                     "jpe",
@@ -120,14 +160,100 @@
                     "mp4",
                     "webm",
                     "wmv"
-                ]
+                ],
+                "meta": {
+                    "type": "file",
+                    "required": "true"
+                }
             },
             "legal": {
                 "label": "Ich besitze die Rechte an diesem Bild und gebe es hiermit zur Veröffentlichung und Bearbeitung frei. Des Weiteren habe ich die Datenschutzbestimmungen gelesen.",
-                "errorReqired": "Das Bild wird nur angenommen, wenn Sie der Erklärung zustimmen!"
+                "errorReqired": "Das Bild wird nur angenommen, wenn Sie der Erklärung zustimmen!",
+                "meta": {
+                    "type": "check",
+                    "required": "true"
+                }
             },
             "submit": {
-                "label": "Speichern"
+                "label": "Speichern",
+                "meta": {
+                    "type": "submit"
+                }
+            }
+        }
+    },
+    "gaestebuch": {
+        "title": "Gästebuch-Upload zur Verabschiedung von Werner Pees",
+        "password": "superSicher123123",
+        "username": "admin",
+        "secret": "a6d7f6bhas9d8f76asdf876af8364fgaiefzba3f7ae87zvgiawuzegfivawefz",
+        "manual": "Zum gestalten der Gästebuchseiten entweder die Vorlagen zum download benutzen, oder selber die Seite(n) gestalten.",
+        "download": [
+            "PDF Vorlage Gästebuch mit Foto in Hochformat.pdf",
+            "PDF Vorlage Gästebuch mit Foto in Querformat.pdf",
+            "Word Vorlage Gästebuch mit Foto in Hochformat.docx",
+            "Word Vorlage Gästebuch mit Foto in Querformat.docx",
+            "Open Office Vorlage Gästebuch mit Foto in Hochformat.odt",
+            "Open Office Vorlage Gästebuch mit Foto in Querformat.odt"
+        ],
+        "form": {
+            "name": {
+                "label": "Name/Spitzname/Familien/Gruppenname der Autoren",
+                "errorReqired": "Bitte Namen angeben!",
+                "errorLength": "Der Namen ist zu lang! Die länge muss zwischen %(min)d und %(max)d liegen.",
+                "meta": {
+                    "type": "string",
+                    "required": "true"
+                }
+            },
+            "email": {
+                "label": "Email: Wird nicht veröffentlicht. (Pflichtfeld)",
+                "errorReqired": "Bitte Email-Addresse angeben!",
+                "errorValidation": "Für eine eventuelle Kontaktaufnahme wird eine gültige Email-Adresse benötigt.",
+                "meta": {
+                    "type": "email",
+                    "required": "true"
+                }
+            },
+            "telefon": {
+                "label": "Telefon/Handy (Freiwillig)",
+                "errorReqired": "Bitte Telefon angeben!",
+                "errorLength": "Die Nummer ist zu lang! Die länge muss zwischen %(min)d und %(max)d liegen.",
+                "meta": {
+                    "type": "string"
+                }
+            },
+            "file": {
+                "label": "Gästebucheintrag maximal 2 Seiten nicht größer als %(size)dMB. Erlaubte Formate sind: %(types)s :",
+                "errorReqired": "Bitte wählen Sie ein Dokument zum hochladen aus!",
+                "maxSize": 100,
+                "errorType": "Es sind lediglich Dokumente der folgenden Formate erlaubt: %(types)s :",
+                "fileTypes": [
+                    "pdf",
+                    "odt",
+                    "docx",
+                    "png",
+                    "jpg",
+                    "tif"
+                ],
+                "meta": {
+                    "type": "file",
+                    "required": "true"
+                }
+            },
+            "legal": {
+                "label": "Ich besitze die Rechte an Bild und Text und gebe sie hiermit zur Veröffentlichung und Bearbeitung frei. Des Weiteren habe ich die Datenschutzbestimmungen gelesen.",
+                "errorReqired": "Das Dokument wird nur angenommen, wenn Sie der Erklärung zustimmen!",
+                "meta": {
+                    "type": "check",
+                    "required": "true"
+                }
+            },
+            "submit": {
+                "label": "Speichern",
+                "meta": {
+                    "type": "submit"
+                }
             }
         }
     }
