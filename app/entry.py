@@ -28,6 +28,8 @@ class EntryMetadata:
         self.filename = secure_filename(image.filename)
         self.fileextension =    self.filename.split('.')[-1]
         '''
+        if form == None: 
+            return
 
         formData = CustomisationLoader().conf.form
         allowedUploads = UploadSet('images', tuple(formData.file.fileTypes))
@@ -55,11 +57,13 @@ class EntryMetadata:
             else:
                 setattr(self,formFieldName,formFieldName)
 
-        self.id = ''.join(secrets.choice(alphabeth) for i in range(20))#random id + location to save
-
+        #zeitstempel
         now = datetime.now()
         dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
         self.uploadDate = dt_string
+        #id
+        self.id = ''.join(secrets.choice(alphabeth) for i in range(20))#random id + location to save
+
 
 
 
@@ -86,8 +90,6 @@ class EntryMetadata:
             
         #image saved first
         #self.image.save(os.path.join(path, str(self.id) , "image" + "." + str(self.fileextension)))
-
-        self.image = None#dont save image in json
 
         jsonStr = json.dumps(self.__dict__)
         print(jsonStr)
@@ -125,17 +127,17 @@ class EntryMetadataLoader:
             with open(os.path.join( js)) as json_file:
                 json_string = json.load(json_file)
                 
-                print(json_string["email"])
-                entry = EntryMetadata()
-                entry.id = json_string["id"]
-                entry.email= json_string["email"]
-                entry.name = json_string["name"]
-                entry.aufnahmedatum=json_string["aufnahmedatum"]
-                entry.beschreibung = json_string["beschreibung"]
-                entry.image = None ## dont loade image here
-                entry.filename = json_string["filename"]
-                entry.fileextension =  json_string["fileextension"]
-                entry.uploadDate= json_string["uploadDate"]
-
+                entry = EntryMetadata(None)
+                for key in json_string.keys():
+                    setattr(entry,key,json_string[key])
+                #entry.id = json_string["id"]
+                #entry.email= json_string["email"]
+                #entry.name = json_string["name"]
+                #entry.aufnahmedatum=json_string["aufnahmedatum"]
+                #entry.beschreibung = json_string["beschreibung"]
+                #entry.image = None ## dont loade image here
+                #entry.filename = json_string["filename"]
+                #entry.fileextension =  json_string["fileextension"]
+                #entry.uploadDate= json_string["uploadDate"]
                 data.insert(0,entry)
         return data

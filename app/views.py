@@ -51,7 +51,11 @@ def index():
 
         filename = secure_filename(form.file.data.filename)
         prevErg = True  # f'Filename: {filename}' + ''
-    return render_template('upload.html', form=form, filename=filename, prevErg=prevErg, title=settings.title)
+
+
+       
+     
+    return render_template('upload.html', manual=getattr(settings,'manual', None), download=getattr(settings,'download', None) , form=form, filename=filename, prevErg=prevErg, title=settings.title)
 
 
 @app.route('/test', methods=['GET', 'POST'])
@@ -99,8 +103,14 @@ def listAllFiles():
 
     return render_template('login.html', form=form, loginFail=loginFail)
 
+@app.route('/publicfile/<path:filename>')
+def download_public_file(filename):
+    # get upload directory without "app" in the begining
+    print()
+    return send_file("static/download/"+ filename)
 
-@app.route('/img/<path:filename>')
+
+@app.route('/file/<path:filename>')
 def download_file(filename):
     # get upload directory without "app" in the begining
     path = app.config['UPLOADED_IMAGES_DEST'].split("/", 1)[1]

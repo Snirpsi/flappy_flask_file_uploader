@@ -10,10 +10,7 @@ from .customisationLoader import CustomisationLoader
 from pprint import pprint
 
 class UploadFormFactory():
-
-
-
-    
+  
     def getForm(self):
         class F(UploadForm):
             pass
@@ -27,19 +24,39 @@ class UploadFormFactory():
             formFieldData = formData.__dict__[formFieldName]
             formFieldObj = None
             if formFieldData.meta.type == "string":
-                formFieldObj = StringField( formFieldData.label, [Length(min=0, max=50,message=formFieldData.errorLength),DataRequired(formFieldData.errorReqired)])
+                validators =[Length(min=0, max=50,message=formFieldData.errorLength)]
+                if hasattr(formFieldData.meta,"required") and formFieldData.meta.required == "true" :
+                    validators.append(DataRequired(formFieldData.errorReqired))
+                
+                formFieldObj = StringField( formFieldData.label, validators=validators )
+            
             elif formFieldData.meta.type == "email":
-                formFieldObj = StringField(formFieldData.label,  [DataRequired(formFieldData.errorReqired), Email(formFieldData.errorValidation)]) 
+                validators = [Email(formFieldData.errorValidation)]
+                if hasattr(formFieldData.meta,"required") and formFieldData.meta.required == "true" :
+                    validators.append(DataRequired(formFieldData.errorReqired))
+                
+                formFieldObj = StringField(formFieldData.label, validators=validators) 
+            
             elif formFieldData.meta.type == "date":
                 formFieldObj = DateField(formFieldData.label ,validators=[Optional()])
             elif formFieldData.meta.type == "text":
-                formFieldObj = TextAreaField(formFieldData.label % {"maxLength":formFieldData.maxLength}, [Length(min=0, max=formFieldData.maxLength, message=formFieldData.errorLength)])
+                validators = [Length(min=0, max=formFieldData.maxLength, message=formFieldData.errorLength)]
+                if hasattr(formFieldData.meta,"required") and formFieldData.meta.required == "true" :
+                    validators.append(DataRequired(formFieldData.errorReqired))
+                formFieldObj = TextAreaField(formFieldData.label % {"maxLength":formFieldData.maxLength}, validators=validators )
+            
             elif formFieldData.meta.type == "file":
-                formFieldObj = FileField(formFieldData.label  %  {"size":formFieldData.maxSize ,  "types":str(formFieldData.fileTypes) },validators=[\
-                    FileRequired(formFieldData.errorReqired),\
-                    FileAllowed(allowedUploads, formFieldData.errorType % {  "types":str(formFieldData.fileTypes) } )])
+                validators = [FileAllowed(allowedUploads, formFieldData.errorType % {  "types":str(formFieldData.fileTypes) } )]
+                if hasattr(formFieldData.meta,"required") and formFieldData.meta.required == "true" :
+                    validators.append(DataRequired(formFieldData.errorReqired))
+                formFieldObj = FileField(formFieldData.label  %  {"size":formFieldData.maxSize ,  "types":str(formFieldData.fileTypes) },validators=validators)
+           
             elif formFieldData.meta.type == "check":
-                formFieldObj = BooleanField( formFieldData.label ,validators=[DataRequired(formFieldData.errorReqired)])
+                validators = []
+                if hasattr(formFieldData.meta,"required") and formFieldData.meta.required == "true" :
+                     validators.append(DataRequired(formFieldData.errorReqired))
+                formFieldObj = BooleanField( formFieldData.label ,validators=validators)
+
             elif formFieldData.meta.type == "submit":
                 formFieldObj = SubmitField(formFieldData.label)
             else:
@@ -48,10 +65,6 @@ class UploadFormFactory():
             setattr(F,formFieldName,formFieldObj)
 
         form = F()
-
-
-        #form = UploadForm()
-        #form.__setitem__(name="test", value= StringField( "test",validators=[DataRequired("reqired")]) )
         return form
 
 
