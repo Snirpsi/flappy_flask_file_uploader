@@ -167,7 +167,7 @@
                 }
             },
             "legal": {
-                "label": "Ich besitze die Rechte an diesem Bild und gebe es hiermit zur Veröffentlichung und Bearbeitung frei. Des Weiteren habe ich die Datenschutzbestimmungen gelesen.",
+                "label": "Ich besitze die Rechte an diesem Bild und gebe es hiermit zur Veröffentlichung und Bearbeitung frei. Des Weiteren bin ich damit einverstanden, dass die im Formular eingetragenen sowie technisch notwendige Daten gespeichert und verarbeitet Werden. Um eine Datenauskunft zu erhalten oder diese Löschen zu lassen, wenden sie sich bitte an verabschiedung-wp@ardiba.de.",
                 "errorReqired": "Das Bild wird nur angenommen, wenn Sie der Erklärung zustimmen!",
                 "meta": {
                     "type": "check",
@@ -242,7 +242,7 @@
                 }
             },
             "legal": {
-                "label": "Ich besitze die Rechte an Bild und Text und gebe sie hiermit zur Veröffentlichung und Bearbeitung frei. Des Weiteren habe ich die Datenschutzbestimmungen gelesen.",
+                "label": "Ich besitze die Rechte an Bild und Text und gebe sie hiermit zur Veröffentlichung und Bearbeitung frei. Des Weiteren bin ich damit einverstanden, dass die im Formular eingetragenen sowie technisch notwendige Daten gespeichert und verarbeitet Werden. Um eine Datenauskunft zu erhalten oder diese Löschen zu lassen, wenden sie sich bitte an verabschiedung-wp@ardiba.de.",
                 "errorReqired": "Das Dokument wird nur angenommen, wenn Sie der Erklärung zustimmen!",
                 "meta": {
                     "type": "check",
