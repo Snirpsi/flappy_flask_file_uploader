@@ -50,8 +50,8 @@
         attr = document.createAttribute("placeholder")
         attr.value = "Datei HIER ablegen";
 
-        document.querySelector("input,#file").classList.add("filestyle bootstrap-filestyle")
-
+        document.querySelector("input,#file").classList.add("filestyle");
+        document.querySelector("input,#file").classList.add("bootstrap-filestyle");
         document.querySelector("input,#file").setAttributeNode(attr);
         document.querySelector(".bootstrap-filestyle,.buttonText").textContent = "Datei wählen";
       }, delayInMilliseconds);
