@@ -6,16 +6,18 @@
     <h1>{{title}}</h1>
 
     {%if manual%}
-      <div><p>{{manual}}</p></div>
+    <div>
+      <p>{{manual}}</p>
+    </div>
     {%endif%}
 
 
     {%if download%}
-      <div>
-        {%for fname in download%}
-          <p><a href="{{url_for('download_public_file', filename=fname)}}" download>{{fname}}</a></p>
-        {%endfor%}
-      </div>
+    <div>
+      {%for fname in download%}
+      <p><a href="{{url_for('download_public_file', filename=fname)}}" download>{{fname}}</a></p>
+      {%endfor%}
+    </div>
     {%endif%}
 
     {%if prevErg%}
@@ -37,7 +39,7 @@
       {% for field in form if not ((field.__class__.__name__ == 'SubmitField') or (field.__class__.__name__ ==
       'CSRFTokenField'))
       %}
-      
+
       <div class="form-group">
         {{field.label(class="form-control-label")}}
         {%if field.errors%}
@@ -54,11 +56,16 @@
       {%endfor%}
 
       {{ form.csrf_token }}
-      <div class="form-group">
+      <div class="form-group flexcont">
         {{ form.submit }}
+        <div class="uploading_feedback flexcont">
+          <img src="https://icon-library.net//images/loading-icon-animated-gif/loading-icon-animated-gif-27.jpg"
+            width="350" />
+          <div> Uploading ... </div>
+        </div>
       </div>
 
-     
+
     </form>
   </div>
 </div>

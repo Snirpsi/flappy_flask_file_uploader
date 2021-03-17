@@ -29,7 +29,7 @@
     <!--zeigt hauptinhalt an-->
     {% block content %}{% endblock %}
   </main>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -51,12 +51,17 @@
         attr.value = "Datei HIER ablegen";
 
         document.querySelector("input,#file").classList.add("filestyle bootstrap-filestyle")
-        
+
         document.querySelector("input,#file").setAttributeNode(attr);
         document.querySelector(".bootstrap-filestyle,.buttonText").textContent = "Datei wählen";
       }, delayInMilliseconds);
 
+      function show_uploading_feedback(uploading_feedback) {
+        var uploading_feedback = document.querySelector(".uploading_feedback");
+        uploading_feedback.style.visibility = "visible";
 
+      }
+      document.querySelector("#submit").addEventListener("click", show_uploading_feedback, false);
     };
     window.onload = init;
   </script>
