@@ -256,5 +256,75 @@
                 }
             }
         }
+
+    },
+    "videogruss": {
+        "title": "Videogruß-Upload zur Verabschiedung von Werner Pees",
+        "password": "superSicher123123",
+        "username": "admin",
+        "secret": "a6d7f6bhas9d8f76asdf876af8364fgaiefzba3f7ae87zvgiawuzegfivawefz",
+        "form": {
+            "name": {
+                "label": "Name: (Pflichtfeld)",
+                "errorReqired": "Bitte Namen angeben!",
+                "errorLength": "Der Namen ist zu lang! Die länge muss zwischen %(min)d und %(max)d liegen.",
+                "meta": {
+                    "type": "string",
+                    "required": "true"
+                }
+            },
+            "email": {
+                "label": "Email: Wird nicht veröffentlicht. (Pflichtfeld)",
+                "errorReqired": "Bitte Email-Addresse angeben!",
+                "errorValidation": "Für eine eventuelle Kontaktaufnahme wird eine gültige Email-Adresse benötigt.",
+                "meta": {
+                    "type": "email",
+                    "required": "true"
+                }
+            },
+           
+            "file": {
+                "label": "Gästebucheintrag maximal 2 Seiten nicht größer als %(size)dMB. Erlaubte Formate sind: %(types)s :",
+                "errorReqired": "Bitte wählen Sie ein Dokument zum hochladen aus!",
+                "maxSize": 512,
+                "errorType": "Es sind lediglich Dokumente der folgenden Formate erlaubt: %(types)s :",
+                "fileTypes": [
+                    "AVCHD",
+                    "AVI",
+                    "FLV",
+                    "MKV",
+                    "MOV",
+                    "MP4",
+                    "WEBM",
+                    "WMV",
+                    "avchd",
+                    "avi",
+                    "flv",
+                    "mkv",
+                    "mov",
+                    "mp4",
+                    "webm",
+                    "wmv"
+                ],
+                "meta": {
+                    "type": "file",
+                    "required": "true"
+                }
+            },
+            "legal": {
+                "label": "Ich besitze die Rechte an Bild und Text und gebe sie hiermit zur Veröffentlichung und Bearbeitung frei. Des Weiteren bin ich damit einverstanden, dass die im Formular eingetragenen sowie technisch notwendige Daten gespeichert und verarbeitet Werden. Um eine Datenauskunft zu erhalten oder diese Löschen zu lassen, wenden Sie sich bitte an verabschiedung-wp@ardiba.de.",
+                "errorReqired": "Das Dokument wird nur angenommen, wenn Sie der Erklärung zustimmen!",
+                "meta": {
+                    "type": "check",
+                    "required": "true"
+                }
+            },
+            "submit": {
+                "label": "Speichern (Bitte warten bis Erfolgsmeldung erscheint!)",
+                "meta": {
+                    "type": "submit"
+                }
+            }
+        }
     }
 }
