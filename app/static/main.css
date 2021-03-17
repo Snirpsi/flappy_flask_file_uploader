@@ -99,3 +99,17 @@ body {
     align-items: left;
 
   }
+
+  .flexcont {
+    display:flex;
+    flex-direction: row;
+  }
+
+  .flexcont *{
+    height: 3rem;
+    width:auto;
+  }
+  .uploading_feedback{
+    visibility:hidden;
+  
+  }
