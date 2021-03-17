@@ -256,7 +256,6 @@
                 }
             }
         }
-
     },
     "videogruss": {
         "title": "Videogruß-Upload zur Verabschiedung von Werner Pees",
@@ -282,9 +281,8 @@
                     "required": "true"
                 }
             },
-           
             "file": {
-                "label": "Gästebucheintrag maximal 2 Seiten nicht größer als %(size)dMB. Erlaubte Formate sind: %(types)s :",
+                "label": "Upload des Videos. Erlaubte Formate sind: %(types)s :",
                 "errorReqired": "Bitte wählen Sie ein Dokument zum hochladen aus!",
                 "maxSize": 512,
                 "errorType": "Es sind lediglich Dokumente der folgenden Formate erlaubt: %(types)s :",
