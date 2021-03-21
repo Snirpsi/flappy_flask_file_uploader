@@ -282,10 +282,10 @@
                 }
             },
             "file": {
-                "label": "Upload des Videos. Erlaubte Formate sind: %(types)s :",
+                "label": "Upload des Videos. Maximahle größe ist %(size)d. Erlaubte Formate sind: %(types)s :",
                 "errorReqired": "Bitte wählen Sie ein Dokument zum hochladen aus!",
                 "maxSize": 512,
-                "errorType": "Gästebucheintrag maximal 2 Seiten nicht größer als %(size)dMB. Es sind lediglich Dokumente der folgenden Formate erlaubt: %(types)s :",
+                "errorType": "Es sind lediglich Dokumente der folgenden Formate erlaubt: %(types)s :",
                 "fileTypes": [
                     "AVCHD",
                     "AVI",
