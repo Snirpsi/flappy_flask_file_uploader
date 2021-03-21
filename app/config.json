@@ -285,7 +285,7 @@
                 "label": "Upload des Videos. Erlaubte Formate sind: %(types)s :",
                 "errorReqired": "Bitte wählen Sie ein Dokument zum hochladen aus!",
                 "maxSize": 512,
-                "errorType": "Es sind lediglich Dokumente der folgenden Formate erlaubt: %(types)s :",
+                "errorType": "Gästebucheintrag maximal 2 Seiten nicht größer als %(size)dMB. Es sind lediglich Dokumente der folgenden Formate erlaubt: %(types)s :",
                 "fileTypes": [
                     "AVCHD",
                     "AVI",
@@ -310,7 +310,7 @@
                 }
             },
             "legal": {
-                "label": "Ich besitze die Rechte an Bild und Text und gebe sie hiermit zur Veröffentlichung und Bearbeitung frei. Des Weiteren bin ich damit einverstanden, dass die im Formular eingetragenen sowie technisch notwendige Daten gespeichert und verarbeitet Werden. Um eine Datenauskunft zu erhalten oder diese Löschen zu lassen, wenden Sie sich bitte an verabschiedung-wp@ardiba.de.",
+                "label": "Ich besitze die Rechte an Bild und Text und gebe sie hiermit zur Veröffentlichung und Bearbeitung frei. Des Weiteren bin ich damit einverstanden, dass die im Formular eingetragenen sowie technisch notwendige Daten gespeichert und verarbeitet Werden. Um eine Datenauskunft zu erhalten oder diese Löschen zu lassen, wenden Sie sich bitte an team@verabschiedung-wp.de.",
                 "errorReqired": "Das Dokument wird nur angenommen, wenn Sie der Erklärung zustimmen!",
                 "meta": {
                     "type": "check",
@@ -319,6 +319,74 @@
             },
             "submit": {
                 "label": "Speichern (Bitte warten bis Erfolgsmeldung erscheint!)",
+                "meta": {
+                    "type": "submit"
+                }
+            }
+        }
+    },
+    "videomessage": {
+        "title": "Video Greeting for retirement of Werner Pees",
+        "password": "superSicher123123",
+        "username": "admin",
+        "secret": "a6d7f6bhas9d8f76asdf876af8364fgaiefzba3f7ae87zvgiawuzegfivawefz",
+        "form": {
+            "name": {
+                "label": "Name: (reqired)",
+                "errorReqired": "Please enter your name!",
+                "errorLength": "Name to long! Length must be between %(min)d and %(max)d Letters.",
+                "meta": {
+                    "type": "string",
+                    "required": "true"
+                }
+            },
+            "email": {
+                "label": "Email: (required)",
+                "errorReqired": "Please enter your email!",
+                "errorValidation": "Email adress not valid",
+                "meta": {
+                    "type": "email",
+                    "required": "true"
+                }
+            },
+            "file": {
+                "label": "Video Upload. Maximum size is %(size)dMB, allowed file types are: %(types)s :",
+                "errorReqired": "Please select a video to upload!",
+                "maxSize": 512,
+                "errorType": "Allowed file types are: %(types)s !",
+                "fileTypes": [
+                    "AVCHD",
+                    "AVI",
+                    "FLV",
+                    "MKV",
+                    "MOV",
+                    "MP4",
+                    "WEBM",
+                    "WMV",
+                    "avchd",
+                    "avi",
+                    "flv",
+                    "mkv",
+                    "mov",
+                    "mp4",
+                    "webm",
+                    "wmv"
+                ],
+                "meta": {
+                    "type": "file",
+                    "required": "true"
+                }
+            },
+            "legal": {
+                "label": "I own the rights to images and text and hereby release them for publication and editing. Furthermore, I consent to the technically necessary data entered in the form being stored and processed. In order to obtain information about the data or to have it deleted, please contact team@verabschiedung-wp.de.",
+                "errorReqired": "The file will only be accepted if you agree to the declaration!",
+                "meta": {
+                    "type": "check",
+                    "required": "true"
+                }
+            },
+            "submit": {
+                "label": "Save",
                 "meta": {
                     "type": "submit"
                 }
