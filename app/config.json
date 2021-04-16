@@ -282,7 +282,7 @@
                 }
             },
             "file": {
-                "label": "Upload des Videos. Maximahle größe ist %(size)d. Erlaubte Formate sind: %(types)s :",
+                "label": "Upload des Videos. Maximahle größe ist %(size)dMB. Erlaubte Formate sind: %(types)s :",
                 "errorReqired": "Bitte wählen Sie ein Dokument zum hochladen aus!",
                 "maxSize": 1024,
                 "errorType": "Es sind lediglich Dokumente der folgenden Formate erlaubt: %(types)s :",
